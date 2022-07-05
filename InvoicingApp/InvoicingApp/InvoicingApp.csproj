@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="images\icon.png" />
+    <None Remove="images\plus.png" />
+    <None Remove="images\remove.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PdfSharp" Version="1.50.5147" />
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0-preview.5.22301.12" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="7.0.0-preview.5.22301.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\icon.png" />
+    <Resource Include="images\plus.png" />
+    <Resource Include="images\remove.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="settings.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
