@@ -11,7 +11,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\folder-icon.png" />
     <None Remove="images\icon.png" />
+    <None Remove="images\logo.ico" />
+    <None Remove="images\logo.png" />
     <None Remove="images\plus.png" />
     <None Remove="images\remove.png" />
   </ItemGroup>
@@ -23,7 +26,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="images\folder-icon.png" />
     <Resource Include="images\icon.png" />
+    <Resource Include="images\logo.png" />
     <Resource Include="images\plus.png" />
     <Resource Include="images\remove.png" />
   </ItemGroup>

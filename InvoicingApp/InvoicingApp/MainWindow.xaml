@@ -5,19 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InvoicingApp"
         mc:Ignorable="d"
-        Title="Invoicing App" Height="800" Width="1400" Icon="/images/icon.png" 
+        Title="Invoicing App" Height="800" Width="1400" Icon="/images/logo.png" 
         Background="{DynamicResource MainWindowBG}"
         WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
-        <SolidColorBrush x:Key="MainWindowBG" Color="#3d3d3d"></SolidColorBrush>
-        <SolidColorBrush x:Key="SideBarBG" Color="#737373"></SolidColorBrush>
-        <SolidColorBrush x:Key="SideBarFontColor" Color="#dedede"></SolidColorBrush>
+        <SolidColorBrush x:Key="MainWindowBG" Color="#292929"></SolidColorBrush>
+        <SolidColorBrush x:Key="SideBarBG" Color="#d9d9d9"></SolidColorBrush>
+        <SolidColorBrush x:Key="SideBarFontColor" Color="#d9d9d9"></SolidColorBrush>
 
         <!-- ======== Button Styling ======== -->
         <Style x:Key="SideButtons" TargetType="{x:Type Button}">
 
-            <Setter Property="FontSize" Value="20px"/>
+            <Setter Property="FontSize" Value="18
+                    px"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Padding" Value="10"/>
             <Setter Property="Width" Value="100"/>
@@ -34,7 +35,7 @@
         <SolidColorBrush x:Key="Button.Disabled.Border" Color="#4a4a4a"/>
         <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#4a4a4a"/>
         <ControlTemplate x:Key="RoundedButtons" TargetType="{x:Type ButtonBase}">
-            <Border x:Name="border" CornerRadius="8" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+            <Border x:Name="border" CornerRadius="25" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
                 <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
             </Border>
             <ControlTemplate.Triggers>
@@ -95,6 +96,31 @@
             </Setter>
         </Style>
 
+        <!-- This style is used for buttons, to remove the WPF default 'animated' mouse over effect -->
+        <Style x:Key="folderBtnStyle" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                        BorderThickness="0"
+                        Padding="0" 
+                        BorderBrush="DarkGray" 
+                        CornerRadius="3" 
+                        Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="Black" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Window.Resources>
 
     <Grid>
@@ -105,26 +131,28 @@
 
         <Canvas Background="{StaticResource SideBarBG}">
 
-            <Button Click="Invoice_Btn" Cursor="Hand" Template="{DynamicResource RoundedButtons}" Style="{StaticResource SideButtons}" Canvas.Left="80" Canvas.Top="100">
+            <Button Click="Invoice_Btn" Cursor="Hand" Template="{DynamicResource RoundedButtons}" Style="{StaticResource SideButtons}" Canvas.Left="56" Canvas.Top="265" HorizontalAlignment="Center" VerticalAlignment="Top" Width="138" Height="50">
                 Invoice
             </Button>
-            <Button Click="Quote_Btn" Cursor="Hand" Template="{DynamicResource RoundedButtons}" Style="{StaticResource SideButtons}" Canvas.Left="80" Canvas.Top="200">
+            <Button Click="Quote_Btn" Cursor="Hand" Template="{DynamicResource RoundedButtons}" Style="{StaticResource SideButtons}" Canvas.Left="56" Canvas.Top="332" HorizontalAlignment="Center" VerticalAlignment="Top" Width="138">
                 Quote
             </Button>
-            <Button Click="ChangeFolder" Cursor="Hand" Template="{DynamicResource RoundedButtons}" Style="{StaticResource SideButtons}" Canvas.Left="50" Canvas.Top="300" HorizontalAlignment="Left" VerticalAlignment="Center" Width="160">
-                Change Folder
-            </Button>
-            <Button Cursor="Hand" Template="{DynamicResource RoundedButtons}" Style="{StaticResource SideButtons}" Click="EditPDF" Canvas.Left="25" Canvas.Top="400">
+            <Button Cursor="Hand" Template="{DynamicResource RoundedButtons}" Style="{StaticResource SideButtons}" Click="EditPDF" Canvas.Left="56" Canvas.Top="397" HorizontalAlignment="Center" VerticalAlignment="Top" Width="138">
                 Edit
             </Button>
-            <Button Cursor="Hand" Template="{DynamicResource RoundedButtons}" Style="{StaticResource SideButtons}" Click="SavePDF" Canvas.Left="130" Canvas.Top="400" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Button Cursor="Hand" Template="{DynamicResource RoundedButtons}" Style="{StaticResource SideButtons}" Click="SavePDF" Canvas.Left="56" Canvas.Top="460" HorizontalAlignment="Center" VerticalAlignment="Top" Width="138">
                 Save
             </Button>
+
+            <Button Style="{StaticResource folderBtnStyle}" Cursor="Hand" Width="40" BorderThickness="0" Height="40" Click="ChangeFolder" Canvas.Left="105" Canvas.Top="658" HorizontalAlignment="Center" VerticalAlignment="Top" >
+                <Image Source="/images/folder-icon.png" Height="40" Width="40" HorizontalAlignment="Left" Canvas.Left="56" Canvas.Top="692" VerticalAlignment="Top"/>
+            </Button>
+
         </Canvas>
 
         <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Visible">
             <Canvas x:Name="pageCanvasBG" Grid.Column="1" Width="Auto" Height="1300">
-                <Canvas x:Name="pageCanvas" Grid.Column="1" Width="800" Height="1130" Background="White" Canvas.Left="146" Canvas.Top="79">
+                <Canvas x:Name="pageCanvas" Grid.Column="1" Width="800" Height="1130" Background="White" Canvas.Left="167" Canvas.Top="57">
 
                     <!--Header-->
                     <TextBlock FontSize="30" FontWeight="SemiBold" Foreground="#333333" Canvas.Left="163" Canvas.Top="38" HorizontalAlignment="Center" VerticalAlignment="Center">East London Electrical Services LTD</TextBlock>
