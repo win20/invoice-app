@@ -27,13 +27,13 @@
             <Setter Property="Foreground" Value="{StaticResource SideBarFontColor}"/>
 
         </Style>
-        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#4a4a4a"/>
-        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#4a4a4a"/>
-        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#4a4a4a"/>
-        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#4a4a4a"/>
-        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#4a4a4a"/>
-        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#4a4a4a"/>
-        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#4a4a4a"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#3C3C3C"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#3C3C3C"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#3C3C3C"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#3C3C3C"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#3C3C3C"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#3C3C3C"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#3C3C3C"/>
         <ControlTemplate x:Key="RoundedButtons" TargetType="{x:Type ButtonBase}">
             <Border x:Name="border" CornerRadius="25" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
                 <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
@@ -131,16 +131,16 @@
 
         <Canvas Background="{StaticResource SideBarBG}">
 
-            <Button Click="Invoice_Btn" Cursor="Hand" Template="{DynamicResource RoundedButtons}" Style="{StaticResource SideButtons}" Canvas.Left="56" Canvas.Top="265" HorizontalAlignment="Center" VerticalAlignment="Top" Width="138" Height="50">
+            <Button Click="Invoice_Btn" BorderThickness="0" Cursor="Hand" Template="{DynamicResource RoundedButtons}" Style="{StaticResource SideButtons}" Canvas.Left="56" Canvas.Top="265" HorizontalAlignment="Center" VerticalAlignment="Top" Width="138" Height="50">
                 Invoice
             </Button>
-            <Button Click="Quote_Btn" Cursor="Hand" Template="{DynamicResource RoundedButtons}" Style="{StaticResource SideButtons}" Canvas.Left="56" Canvas.Top="332" HorizontalAlignment="Center" VerticalAlignment="Top" Width="138">
+            <Button Click="Quote_Btn" BorderThickness="0" Cursor="Hand" Template="{DynamicResource RoundedButtons}" Style="{StaticResource SideButtons}" Canvas.Left="56" Canvas.Top="332" HorizontalAlignment="Center" VerticalAlignment="Top" Width="138">
                 Quote
             </Button>
-            <Button Cursor="Hand" Template="{DynamicResource RoundedButtons}" Style="{StaticResource SideButtons}" Click="EditPDF" Canvas.Left="56" Canvas.Top="397" HorizontalAlignment="Center" VerticalAlignment="Top" Width="138">
+            <Button Cursor="Hand" BorderThickness="0" Template="{DynamicResource RoundedButtons}" Style="{StaticResource SideButtons}" Click="EditPDF" Canvas.Left="56" Canvas.Top="397" HorizontalAlignment="Center" VerticalAlignment="Top" Width="138">
                 Edit
             </Button>
-            <Button Cursor="Hand" Template="{DynamicResource RoundedButtons}" Style="{StaticResource SideButtons}" Click="SavePDF" Canvas.Left="56" Canvas.Top="460" HorizontalAlignment="Center" VerticalAlignment="Top" Width="138">
+            <Button Cursor="Hand" BorderThickness="0" Template="{DynamicResource RoundedButtons}" Style="{StaticResource SideButtons}" Click="SavePDF" Canvas.Left="56" Canvas.Top="460" HorizontalAlignment="Center" VerticalAlignment="Top" Width="138">
                 Save
             </Button>
 
@@ -151,7 +151,7 @@
         </Canvas>
 
         <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Visible">
-            <Canvas x:Name="pageCanvasBG" Grid.Column="1" Width="Auto" Height="1300">
+            <Canvas x:Name="pageCanvasBG" Grid.Column="1" Width="Auto" Height="1250">
                 <Canvas x:Name="pageCanvas" Grid.Column="1" Width="800" Height="1130" Background="White" Canvas.Left="167" Canvas.Top="57">
 
                     <!--Header-->
